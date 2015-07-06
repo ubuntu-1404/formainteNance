@@ -13,7 +13,7 @@ puppet resource package puppetmaster ensure=latest
 #puppet cert generate <NAME> --dns_alt_names=<NAME1>,<NAME2>
 #puppet agent --test --ca_server=<SERVERa>
 #puppet cert list
-#puppet cert --allow-dns-alt-names sign <NAMEl>
+#puppet cert sign --all
 fi
 if [ ${ttyp} -eq 2 ]; then
 apt-get install puppet
