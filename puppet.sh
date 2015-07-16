@@ -14,9 +14,11 @@ puppet resource package puppetmaster ensure=latest
 #puppet agent --test --ca_server=<SERVERa>
 #puppet cert list
 #puppet cert sign --all
-fi
+f
 if [ ${ttyp} -eq 2 ]; then
 apt-get install puppet
 puppet resource package puppet ensure=latest
 fi
-
+#
+#find way deal with [certificate verify failed]
+#find /var/lib/puppet -type f -print0 |xargs -0r rm
