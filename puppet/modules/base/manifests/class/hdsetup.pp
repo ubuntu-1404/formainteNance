@@ -9,23 +9,23 @@ class hdsetup {
 		user	=>	"root",
 		cwd	=>	"/home/ubuntu",} ~>
         file {
-                "$tmp/hadoop-2.6.0.tar.gz":
-                source=>"puppet:///wodezoon/hadoop/hadoop-2.6.0.tar.gz",
-                owner=>"ubuntu",
+                "$tmp/hadoop-2.7.1.tar.gz":
+                source	=>	"puppet:///wodezoon/hadoop/hadoop-2.7.1.tar.gz",
+                owner	=>	"ubuntu",
 		ensure	=>	present,
-                mode=>"777",}~>
+                mode	=>	"777",}~>
         file {
                 "$tmp/hadoopsetup.sh":
-                source=>"puppet:///wodezoon/hadoop/hadoopsetup.sh",
-                owner=>"ubuntu",
+                source	=>	"puppet:///wodezoon/hadoop/hadoopsetup.sh",
+                owner	=>	"ubuntu",
 		ensure	=>	present,
-                mode=>"777",}~>
+                mode	=>	"777",}~>
         file {
                 "$tmp/slaves":
-                source=>"puppet:///wodezoon/hadoop/slaves",
-                owner=>"ubuntu",
+                source	=>	"puppet:///wodezoon/hadoop/slaves",
+                owner	=>	"ubuntu",
 		ensure	=>	present,
-                mode=>"777",}~>
+                mode	=>	"777",}~>
 	exec {
 		"hadoopsetup":
 		command	=>	"/home/ubuntu/hadoop/hadoopsetup.sh",
