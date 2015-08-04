@@ -14,10 +14,10 @@ echo "  file \"/etc/bind/nametoip\";"       >>  /etc/bind/named.conf.default-zon
 echo "};"                                   >>  /etc/bind/named.conf.default-zones
 
 #iptoname in default
-echo " zone \"1.168.192.in-addr.arpa\"  {"  >>  /etc/bind/named.conf.default-zone
-echo "  type master"                        >>  /etc/bind/named.conf.default-zone
-echo "  file \"/etc/bind/iptoname\""        >>  /etc/bind/named.conf.default-zone
-echo " };"                                  >>  /etc/bind/named.conf.default-zone
+echo " zone \"1.168.192.in-addr.arpa\"  {"  >>  /etc/bind/named.conf.default-zones
+echo "  type master"                        >>  /etc/bind/named.conf.default-zones
+echo "  file \"/etc/bind/iptoname\""        >>  /etc/bind/named.conf.default-zones
+echo " };"                                  >>  /etc/bind/named.conf.default-zones
 
 #update nametoip
 cp -r /etc/bind/db.local /etc/bind/nametoip
