@@ -1,3 +1,4 @@
+#!/bin/bash
 namehost=dns.wodezoon.com
 apt-get install bind9
 echo ${namehost}                            >   /etc/hostname
