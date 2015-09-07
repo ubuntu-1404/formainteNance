@@ -1,0 +1,24 @@
+#!/bin/bash
+jpath=/home/sam
+echo "`ifconfig eth0 | grep \"inet \"`" > ${jpath}/hostIP
+hostip=(`tr -sc '[0-9.]' ' ' < ${jpath}/hostIP`)
+newHOST=${hostip[0]}
+iptables -F
+iptables -t nat -F
+iptables -A INPUT -d ${newHOST} -p tcp --dport 20022 -j ACCEPT
+iptables -A INPUT -d ${newHOST} -p tcp --dport 53 -j ACCEPT
+iptables -A INPUT -d ${newHOST} -p tcp --dport 953 -j ACCEPT
+iptables -A INPUT -d 192.168.11.1 -p tcp --dport 53 -j ACCEPT
+iptables -A INPUT -d 192.168.11.1 -p tcp --dport 953 -j ACCEPT
+iptables -A INPUT -d ${newHOST} -j REJECT --reject-with icmp-host-prohibited
+#iptables -A INPUT -d 192.168.11.1 -j REJECT --reject-with icmp-host-prohibited
+iptables -t nat -A POSTROUTING -s 192.168.11.0/24 -j MASQUERADE
+iptables -t nat -A PREROUTING -d ${newHOST} -p tcp --dport 21422 -j DNAT --to-destination 192.168.11.14:22
+iptables -t nat -A PREROUTING -d ${newHOST} -p tcp --dport 21522 -j DNAT --to-destination 192.168.11.15:22
+iptables -t nat -A PREROUTING -d ${newHOST} -p tcp --dport 21722 -j DNAT --to-destination 192.168.11.17:22
+iptables -t nat -A PREROUTING -d ${newHOST} -p tcp --dport 21822 -j DNAT --to-destination 192.168.11.18:22
+iptables -t nat -A PREROUTING -d ${newHOST} -p tcp --dport 20080 -j DNAT --to-destination 192.168.11.17:80
+iptables -t nat -A PREROUTING -d ${newHOST} -p tcp --dport 20070 -j DNAT --to-destination 192.168.11.236:9200
+iptables -t nat -A PREROUTING -d ${newHOST} -p tcp --dport 20088 -j DNAT --to-destination 192.168.11.14:8088
+iptables -t nat -A PREROUTING -d ${newHOST} -p tcp --dport 20042 -j DNAT --to-destination 192.168.11.15:8042
+iptables -t nat -A PREROUTING -d ${newHOST} -p tcp --dport 44444 -j DNAT --to-destination 192.168.11.15:44444
