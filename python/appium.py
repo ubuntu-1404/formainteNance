@@ -10,6 +10,8 @@ desired_caps['platformName'] = 'Android'
 desired_caps['deviceName'] = 'android-ab192e8653eadd82'
 desired_caps['app'] = 'C:\\Users\\Sam\\python\\wodezoon.apk'
 # desired_caps['app'] = 'C:\\Users\\Sam\\python\\MyAPP.apk'
+desired_caps['unicodeKeyboard'] = True
+desired_caps['resetKeyboard']   = True
 
 driver      =  webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 #
