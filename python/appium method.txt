@@ -117,3 +117,6 @@ long_press(int x, int y)
 long_press(WebElement el, int x, int y)
 #取消执行该动作
 cancel()
+##############################################RegexPattern########################
+#提取数字
+re.findall(r"\d+\.?\d*",str)
