@@ -1,0 +1,8 @@
+1.需要建立一个\ResidentFlash2\tmp\目录，这个目录名在fixture/__init__.py中配置。
+2.bin\NavApp\YF_PND\Windows目录下有个xxtool_route.dll需要copy到设备的\Windows目录下。
+3.bin\NavApp\YF_PND的MCNE_YF.exe需要替换掉设备上的导航程序。
+4.如果设备上的导航程序目录不是\ResidentFlash2\DHYD\XXNAV\，则需要修改fixture._ExeNamePND。
+5.测试代码中只要有fixture.connectdevice()这一行就是链接设备进行测试，在结束时还有一行fixture.closedevice()，去掉这两行则在PC上测试。fixture.connectdevice必须在setup之前，closedevice必须在teardown之后。
+6.如果连接不上可能是需要进入WinCE界面（就是从关于进入）或者远程启动\Windows\explorer.exe。
+
+
