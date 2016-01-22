@@ -1,0 +1,2 @@
+1、设置允许远程连接Mysql:
+grant usage on *.* to 'root'@'%' identified by 'password';
