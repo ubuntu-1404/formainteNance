@@ -1,3 +1,7 @@
+" git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+" vim -> :BundleInstall
+" vim -> mw -> ctrle_w -> ctrl_p ->ctrl_] -> ctrl_n
+
 " All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by
 " the call to :runtime you can find below.  If you wish to change any of those
 " settings, you should do it in this file (/etc/vim/vimrc), since debian.vim
