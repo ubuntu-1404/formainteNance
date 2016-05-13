@@ -3,15 +3,15 @@ namehost=dns.wodezoon.com
 apt-get install bind9
 echo ${namehost}                            >   /etc/hostname
 hostname ${namehost}
-sed -i "/forwarders {/,+0a forwarders {"        /etc/bind/named.conf.options
-sed -i "/0.0.0.0/,+0a 219.141.136.10"           /etc/bind/named.conf.options
-sed -i "/219.141.136.10/,+0a };"                /etc/bind/named.conf.options
+sed -i "/forwarders {/s/\/\///"        /etc/bind/named.conf.options
+sed -i "/forwarders/,+0a                219.141.136.10;"  /etc/bind/named.conf.options
+sed -i "/};/s/\/\///"        /etc/bind/named.conf.options
 
 cp /etc/bind/named.conf.default-zones           /etc/bind/named.conf.default-zones.bak
 #nametoip in default
 echo "zone \"wodezoon.com\"  {"             >>  /etc/bind/named.conf.default-zones
-echo "  type master;"                       >>  /etc/bind/named.conf.default-zones
-echo "  file \"/etc/bind/nametoip\";"       >>  /etc/bind/named.conf.default-zones
+echo "    type master;"                       >>  /etc/bind/named.conf.default-zones
+echo "    file \"/etc/bind/nametoip\";"       >>  /etc/bind/named.conf.default-zones
 echo "};"                                   >>  /etc/bind/named.conf.default-zones
 
 #iptoname in default
